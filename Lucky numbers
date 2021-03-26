@@ -1,0 +1,39 @@
+"""
+Created on 19th of Jan 2021
+Author: Zeeshan Nasir
+
+Purpose:
+      - Opening a text file containing the Ids
+      - Allow user to enter a number and check if matches the numbers inside the file
+      - print the result
+
+References:
+     https://stackoverflow.com/
+"""
+# function to open the file
+with open('lucky_ids.txt') as f:
+    # Will display the file in form of a list
+    content = f.read().splitlines()
+# command to close the file once information is extracted
+    f.close()
+# Will convert the list given above to an integer list
+# will allow us to verify later on whether the user will input a number or something else
+    list_int = [int(i) for i in content]
+# will ask user to enter the Id number
+x = input("Enter Id Number Please: ")
+# using try function to check for errors
+try:
+    # assigning the values and checking if user enters a number or something else
+   i = int(x)
+# If statement used to check the information
+   if i in list_int:
+    # if the if is listed will print this
+    print("Your Id is listed in the list", '\n')
+    # else will print the next
+   else:
+    print(" Sorry your Id is not listed ", '\n')
+    # will display the numbers saved inside the file
+    print(' Listed Ids are as followed: ', '\n', '\n', content)
+# except used to detect the error if user does not enter a number
+except ValueError:
+  print("You did not enter a number")
